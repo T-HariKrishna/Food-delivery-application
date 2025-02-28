@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Food Delivery</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <style>
+      /* Basic reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .registration-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        max-height: 600px; /* Limit the height of the form container */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #ff6f61; /* Bright red/orange color for food delivery */
+      }
+
+      .registration-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      input,
+      textarea {
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #ff6f61; /* Highlight with food delivery color */
+      }
+
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
+
+      button.submit-btn {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button.submit-btn:hover {
+        background-color: #ff3e2a; /* Darker red-orange on hover */
+      }
+
+      button.submit-btn:active {
+        background-color: #e1361c; /* Active state */
+      }
+
+      .signin-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .signin-link a {
+        color: #ff6f61;
+        text-decoration: none;
+      }
+
+      .signin-link a:hover {
+        text-decoration: underline;
+      }
+      /* Style the select field */
+select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Highlight the select field when focused */
+select:focus {
+  border-color: #ff6f61; /* Highlight with the food delivery color */
+  background-color: #f8f8f8; /* Light background on focus */
+}
+
+/* Add some padding and style to the options (if desired) */
+select option {
+  padding: 10px;
+  font-size: 16px;
+}
+      
+    </style>
+  </head>
+  <body>
+    <div class="registration-container">
+      <h2>Register for Food Delivery</h2>
+      <form action="ValidateUserDetails" method="POST" class="registration-form">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your full name"
+          required
+        />
+
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Choose a username"
+          required
+        />
+        
+      
+
+
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+        <label for="password">Confirm Password</label>
+        <input
+          type="password"
+          id="password"
+          name="confirmPassword"
+          placeholder="Enter your password again"
+          required
+        />
+
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter your phone number"
+          required
+        />
+
+  <label for="role">Role</label>
+		<select name="role">
+		<option value="user">User</option>
+		<option value="admin">Admin</option>
+		</select>
+        <label for="address">Address</label>
+        <textarea
+          id="address"
+          name="address"
+          placeholder="Enter your delivery address"
+          required
+        ></textarea>
+
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+
+      <p class="signin-link">
+        Already registered? <a href="signInPage.html">Sign in here</a>
+      </p>
+    </div>
+  </body>
+</html>
