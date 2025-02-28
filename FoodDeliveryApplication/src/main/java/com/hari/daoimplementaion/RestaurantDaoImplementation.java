@@ -18,8 +18,28 @@ public class RestaurantDaoImplementation implements RestaurantDao {
     private static final String UPDATE_RESTAURANT = "UPDATE `Restaurant` SET `name`=?, `address`=?, `phone`=?, `rating`=?, `cuisineType`=?, `isActive`=?,  `adminUserId`=?, `imagePath`=? WHERE `restaurantId`=?";
     private static final String ADD_RESTAURANT = "INSERT INTO `Restaurant` (`name`, `address`, `phone`, `rating`, `cuisineType`, `isActive`, `adminUserId`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_RESTAURANT = "DELETE FROM `Restaurant` WHERE `restaurantId`=?";
+    private static final String SEARCH_RESTAURANT = "SELECT * FROM `restaurant` where LOWER(`name`) LIKE  LOWER(?)";
 
    
+    public List<Restaurant> searchRestaurantByName(String name){
+    List<Restaurant> restaurantList=new ArrayList<Restaurant>();
+    	try(Connection connection=DataBaseUtility.getConnection();
+    		PreparedStatement preparedStatement=connection.prepareStatement(SEARCH_RESTAURANT)	;){
+    		String restaurantName="%"+name+"%";
+    		preparedStatement.setString(1, restaurantName);
+    		
+    		ResultSet resultSet = preparedStatement.executeQuery();
+    		
+    		while(resultSet.next()) {
+    			Restaurant restaurant = extractRestaurant(resultSet);
+    			restaurantList.add(restaurant);
+    		}
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	return restaurantList;
+    }
     
     public String getRestaurantName(int restaurantId) {
     	String restaurantName =null;

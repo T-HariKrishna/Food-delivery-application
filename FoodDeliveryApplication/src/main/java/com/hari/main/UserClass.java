@@ -3,7 +3,9 @@ package com.hari.main;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hari.daoimplementaion.RestaurantDaoImplementation;
 import com.hari.daoimplementaion.UserDaoImplementation;
+import com.hari.model.Restaurant;
 import com.hari.model.User;
 
 public class UserClass {
@@ -14,6 +16,27 @@ public class UserClass {
 	
 	
 	public static void main(String[] args) {
+		
+		
+		
+		RestaurantDaoImplementation restaurantDaoImplementation = new RestaurantDaoImplementation();
+		List<Restaurant> searchRestaurantByName = restaurantDaoImplementation.searchRestaurantByName("a");
+		System.out.println(searchRestaurantByName);
+		System.out.println(searchRestaurantByName.size());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 ////		User user = new User("hari","hari123","har@123","har@123","987645","A.P");
 //		
 		
@@ -23,11 +46,11 @@ public class UserClass {
 //		udio.deleteUser(2);
 //		udio.deleteUser(4);
 
-		List<User> allUsers = udio.getAllUsers();
-		for (User user : allUsers) {
-			System.out.println(user);
-		}
-		
+//		List<User> allUsers = udio.getAllUsers();
+//		for (User user : allUsers) {
+//			System.out.println(user);
+//		}
+//		
 	}
 }
 

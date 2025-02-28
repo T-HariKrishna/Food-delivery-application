@@ -58,6 +58,44 @@
         margin: 0 48px;
         position: relative;
       }
+      
+       .search-btn {
+     
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background-color: #ff3333;
+   /*  transform: translateY(-1px); */
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.2);
+  }
+  .search-container button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px 24px;
+    border-radius: 25px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .search-container button:hover {
+    background-color: #ff3333;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.2);
+  }
 
       .search-icon {
         position: absolute;
@@ -69,7 +107,7 @@
 
       .search-input {
         width: 100%;
-        padding: 12px 20px 12px 45px;
+        padding: 12px 100px 12px 45px;
         border: 2px solid #eee;
         border-radius: 25px;
         font-size: 16px;
@@ -146,6 +184,7 @@
         .nav-items {
           gap: 16px;
         }
+        
       }
     </style>
     <link
@@ -173,16 +212,26 @@
       </a>
       <%} %>
 
+
+
       <div class="search-container">
+     <form action="Search">
         <i class="fas fa-search search-icon"></i>
         <input
           type="text"
-          placeholder="Search for restaurants or dishes..."
+          placeholder="Search for restaurants or items..."
           class="search-input"
+          name="search"
         />
+		<button type="submit" class="search-btn">Search</button>
+ 
+		</form>
       </div>
 
-      <div class="nav-items">
+
+
+
+		<div class="nav-items">
         <!-- Display Order History link only if user is logged in (i.e., user is not null) -->
         <% if (user2 != null && "user".equals(user2.getRole())) { %>
           <a href="OrderHistoryDetails?userId=<%= user2.getUserId() %>" class="nav-item">
