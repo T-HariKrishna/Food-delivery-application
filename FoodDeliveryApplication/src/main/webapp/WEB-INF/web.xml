@@ -4,5 +4,14 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
+  <servlet>
+    <description></description>
+    <display-name>AdminSearchMenuItems</display-name>
+    <servlet-name>AdminSearchMenuItems</servlet-name>
+    <servlet-class>com.hari.servlets.AdminSearchMenuItems</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchMenuItems</servlet-name>
+    <url-pattern>/AdminSearchMenuItems</url-pattern>
+  </servlet-mapping>
 </web-app>

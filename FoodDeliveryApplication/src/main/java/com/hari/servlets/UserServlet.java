@@ -32,7 +32,7 @@ public class UserServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String phone=request.getParameter("phone");
-		String address=request.getParameter("address");
+		String address=request.getParameter("address").trim();
 
 		System.out.println(name+" "+username+" "+email+" "+password+"  "+phone+" "+address+" "+role);
 

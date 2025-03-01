@@ -101,7 +101,7 @@
         color: #64748b;
       }  
       textarea {
-      padding-left:10px;
+      padding-left:0px;
         min-height: 100px;
         resize: vertical;
       }

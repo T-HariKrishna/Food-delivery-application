@@ -213,9 +213,9 @@
       <%} %>
 
 
-
+   <% if (user2 != null && "user".equals(user2.getRole())) { %>
       <div class="search-container">
-     <form action="Search">
+     <form action="SearchMenuItems">
         <i class="fas fa-search search-icon"></i>
         <input
           type="text"
@@ -227,7 +227,23 @@
  
 		</form>
       </div>
-
+	 <% } %>
+	 
+	 <% if (user2 != null && "admin".equals(user2.getRole())) { %>
+      <div class="search-container">
+     <form action="AdminSearchMenuItems">
+        <i class="fas fa-search search-icon"></i>
+        <input
+          type="text"
+          placeholder="Search for restaurants or items..."
+          class="search-input"
+          name="search"
+        />
+		<button type="submit" class="search-btn">Search</button>
+ 
+		</form>
+      </div>
+	 <% } %>
 
 
 

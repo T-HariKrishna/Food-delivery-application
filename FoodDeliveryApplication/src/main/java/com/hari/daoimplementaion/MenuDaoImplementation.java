@@ -16,8 +16,25 @@ public class MenuDaoImplementation implements MenuDao {
     private static final String UPDATE_MENU = "UPDATE `Menu` SET `restaurantId`=?, `itemName`=?, `description`=?, `price`=?, `ratings`=?, `isAvailable`=?, `imagePath`=? WHERE `menuId`=?";
     private static final String ADD_MENU = "INSERT INTO `Menu` (`restaurantId`, `itemName`, `description`, `price`, `ratings`, `isAvailable`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_MENU = "DELETE FROM `Menu` WHERE `menuId`=?";
+    private static final String SEARCH_MENU = "SELECT * FROM MENU WHERE LOWER(`itemname`) LIKE LOWER(?)";
 
-    
+    public List<Menu> searchMenuItemsByName(String itemName){
+    	List<Menu> menuList=new ArrayList<Menu>();
+    	try (Connection connection=DataBaseUtility.getConnection();
+    		 PreparedStatement preparedStatement=connection.prepareStatement(SEARCH_MENU);){
+    		String searchMenuName="%"+itemName+"%";
+    		preparedStatement.setString(1, searchMenuName);
+    		ResultSet resultSet = preparedStatement.executeQuery();
+    		while(resultSet.next()) {
+    			Menu menu = extractMenu(resultSet);
+    			menuList.add(menu);
+    		}
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return menuList;
+    }
     
     public List<Menu> getMenuOfAllRestaurants() {
         List<Menu> menuList = new ArrayList<>();

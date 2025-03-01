@@ -3,8 +3,10 @@ package com.hari.main;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hari.daoimplementaion.MenuDaoImplementation;
 import com.hari.daoimplementaion.RestaurantDaoImplementation;
 import com.hari.daoimplementaion.UserDaoImplementation;
+import com.hari.model.Menu;
 import com.hari.model.Restaurant;
 import com.hari.model.User;
 
@@ -19,10 +21,18 @@ public class UserClass {
 		
 		
 		
-		RestaurantDaoImplementation restaurantDaoImplementation = new RestaurantDaoImplementation();
-		List<Restaurant> searchRestaurantByName = restaurantDaoImplementation.searchRestaurantByName("a");
-		System.out.println(searchRestaurantByName);
-		System.out.println(searchRestaurantByName.size());
+//		RestaurantDaoImplementation restaurantDaoImplementation = new RestaurantDaoImplementation();
+//		List<Restaurant> searchRestaurantByName = restaurantDaoImplementation.searchRestaurantByName("a");
+//		System.out.println(searchRestaurantByName);
+//		System.out.println(searchRestaurantByName.size());
+		
+		
+
+		
+//		MenuDaoImplementation menuDaoImplementation = new MenuDaoImplementation();
+//		List<Menu> searchMenuItemsByName = menuDaoImplementation.searchMenuItemsByName("chicken");
+//		System.out.println(searchMenuItemsByName);
+//		System.out.println(searchMenuItemsByName.size());
 		
 		
 		

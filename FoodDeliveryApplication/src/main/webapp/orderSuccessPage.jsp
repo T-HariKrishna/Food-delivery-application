@@ -3,6 +3,7 @@
     <%@ include file="navigationBar.jsp" %>
     <%@ page import="java.util.*" %>
     <%@ page import="com.hari.model.Orders" %>
+    <%@ page import="com.hari.daoimplementaion.RestaurantDaoImplementation" %>
 <!DOCTYPE html>
 
 <html >
@@ -95,8 +96,12 @@
   <body>
   
   
-  <% Orders order=(Orders)session.getAttribute("order");
-  String restaurantName = (String) session.getAttribute("restaurantName");%>
+  	<% 
+  	Orders order=(Orders)session.getAttribute("order");
+   	RestaurantDaoImplementation restaurantDaoImplementation = new RestaurantDaoImplementation();
+	%>
+	
+	
     <div class="container">
       <div class="header">
         <h1>Order Placed Successfully!</h1>
@@ -118,7 +123,7 @@
           </tr>
           <tr>
             <th>Restaurant</th>
-            <td><%= restaurantName %></td>
+            <td><%= restaurantDaoImplementation.getRestaurantName(order.getRestaurantId()) %></td>
           </tr>
           <tr>
             <th>Payment Mode</th>
