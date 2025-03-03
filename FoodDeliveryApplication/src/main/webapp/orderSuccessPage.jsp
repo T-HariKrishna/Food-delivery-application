@@ -131,7 +131,7 @@
           </tr>
           <tr>
             <th>Total Amount</th>
-            <td><%= order.getTotalAmount() %></td>
+            <td>₹<%=" "+ order.getTotalAmount() %></td>
           </tr>
         </table>
       </div>
