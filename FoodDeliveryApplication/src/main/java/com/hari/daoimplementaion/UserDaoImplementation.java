@@ -16,6 +16,7 @@ public class UserDaoImplementation implements UserDao {
 	private static final String UPDATE_USER = "UPDATE `User` SET `name`=?, `username`=?, `password`=?, `email`=?, `phone`=?, `address`=?, `role`=?, `createdDate`=?, `lastLoginDate`=? WHERE `userId`=?";
 	
 	private static final String UPDATE_USER_PROFILE = "UPDATE `User` SET `name`=?, `username`=?, `password`=?, `email`=?, `phone`=?, `address`=?, `role`=? WHERE `userId`=?";
+	private static final String UPDATE_USER_PASSWORD = "UPDATE `User` SET `password`=? WHERE `username`=?";
 	
 	private static final String DELETE_USER = "DELETE FROM `User` WHERE `userId`=?";
 	private static final String DELETE_USER_BY_USERNAME = "DELETE FROM `User` WHERE `email`=?";
@@ -23,6 +24,19 @@ public class UserDaoImplementation implements UserDao {
 	private static final String GET_USER_By_USERNAME = "SELECT * FROM `User` where username=?";
 	private static final String GET_USER_By_EMAIL = "SELECT * FROM `User` where email=?";
 
+	
+	public int updateUserPassword(User user,String newPassword ) {
+		try (Connection connection = DataBaseUtility.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_PASSWORD)) {
+			preparedStatement.setString(1, newPassword);
+			preparedStatement.setString(2, user.getUsername());
+
+			return preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace(); // Consider using a logging framework
+		}
+		return 0;
+	}
 	
 	public int updateUserProfile(User user) {
 		System.err.println(user);

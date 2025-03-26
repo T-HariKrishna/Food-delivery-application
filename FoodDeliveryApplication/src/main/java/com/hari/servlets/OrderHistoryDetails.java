@@ -37,7 +37,9 @@ public class OrderHistoryDetails extends HttpServlet {
 		
 		List<OrderHistory> orderHistoryByUserId = orderHistoryDaoImplementation.getOrderHistoryByUserId(userId);
 		
+		//reverse the history list as recent to past 
 		Collections.reverse(orderHistoryByUserId);
+		
 		session.setAttribute("orderHistoryDetails", orderHistoryByUserId);
 		
 		System.out.println(orderHistoryByUserId);

@@ -31,7 +31,6 @@ public class FetchOrderDetails extends HttpServlet {
 		
 		session.setAttribute("orderItemDetails", orderItemByOrderIdList);
 
-		
 		response.sendRedirect("showOrderItemDetails.jsp");
 	}
 

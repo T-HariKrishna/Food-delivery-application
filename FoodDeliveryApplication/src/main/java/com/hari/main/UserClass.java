@@ -1,5 +1,6 @@
 package com.hari.main;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +20,25 @@ public class UserClass {
 	
 	public static void main(String[] args) {
 		
+//		String otp="";
+//		for(int i=0;i<4;i++) {
+//			int num=(int)Math.floor(Math.random()*10);
+//			System.out.println(otp+=num);
+//		}
+//		
+//		System.out.println(otp);
 		
+		
+		UserDaoImplementation userDaoImplementation = new UserDaoImplementation();
+		User userByUsername1 = userDaoImplementation.getUserByUsername("harikrishna");
+		System.out.println(userByUsername1);
+		
+		userDaoImplementation.updateUserPassword(userByUsername1, "000");
+		User userByUsername2 = userDaoImplementation.getUserByUsername("harikrishna");
+		System.out.println(userByUsername2);
+		
+		
+			
 		
 //		RestaurantDaoImplementation restaurantDaoImplementation = new RestaurantDaoImplementation();
 //		List<Restaurant> searchRestaurantByName = restaurantDaoImplementation.searchRestaurantByName("a");
