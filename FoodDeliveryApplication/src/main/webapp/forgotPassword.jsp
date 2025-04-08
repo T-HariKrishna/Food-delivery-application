@@ -1,3 +1,4 @@
+<%@page import="java.awt.Window"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -71,31 +72,67 @@ button:hover {
     String otp = "";
     for(int i = 0; i < 4; i++) {
         int num = (int) Math.floor(Math.random() * 10);
+        if(i==0 && num==0 ) {
+			System.out.println("num=0 "+num);
+			num=num+1;
+		}
         otp += num;
     }
     session.setAttribute("otp", otp);
     System.out.println("Generated OTP: " + otp);  // Debugging
+    
+    
+    
+   
 %>
 
 <div id="main-container">
     <h3>Enter the OTP sent to you <%= " \" "+ otp + " \"" %></h3>
     
-    <form id="otp-form" action="verifyOtp.jsp" method="post">
-        <input type="text" class="otp-input" maxlength="1" oninput="moveNext(this, 'otp2')" id="otp1" name="otp1" required>
-        <input type="text" class="otp-input" maxlength="1" oninput="moveNext(this, 'otp3')" id="otp2" name="otp2" required>
-        <input type="text" class="otp-input" maxlength="1" oninput="moveNext(this, 'otp4')" id="otp3" name="otp3" required>
-        <input type="text" class="otp-input" maxlength="1" id="otp4" name="otp4" required>
-        <br><br>
+   
+     <form id="otp-form" action="verifyOtp.jsp" method="post">
+     
+        <!-- <input type="text" class="otp-input" maxlength="1" oninput="moveNext(this,'otp2')"  id="otp1" name="otp1" required>
+         -->
+        
+        <%-- <input type="text" class="otp-input" maxlength="1" value=<%=otp.charAt(0)  %> id="otp1" name="otp1" required>
+        <input type="text" class="otp-input" maxlength="1" value=<%=otp.charAt(1) %> id="otp2" name="otp2" required>
+        <input type="text" class="otp-input" maxlength="1" value=<%=otp.charAt(2) %> id="otp3" name="otp3" required>
+        <input type="text" class="otp-input" maxlength="1" value=<%=otp.charAt(3) %> id="otp4" name="otp4" required>
+         --%>
+          <input type="text" class="otp-input" maxlength="1" id="otp1" name="otp1" oninput="moveNext(this,'otp2')"  required>
+        <input type="text" class="otp-input" maxlength="1"  id="otp2" name="otp2" oninput="moveNext(this,'otp3')" required>
+        <input type="text" class="otp-input" maxlength="1"  id="otp3" name="otp3" oninput="moveNext(this,'otp4')" required>
+        <input type="text" class="otp-input" maxlength="1"  id="otp4" name="otp4"  required>
+        
+         <br><br>
         <button type="submit">Verify OTP</button>
+        
     </form>
+    
 </div>
 
 <script>
-function moveNext(current, nextFieldID) {
+ function moveNext(current, nextFieldID) {
     if (current.value.length === 1) {
         document.getElementById(nextFieldID)?.focus();
     }
-}
+} 
+
+
+
+window.onload = function () {
+    const otp = "<%= otp %>"; // Embedded from JSP
+    const confirmAutoFill = window.confirm("Do you want to auto-fill the OTP?");
+
+    if (confirmAutoFill) {
+        document.getElementById("otp1").value = otp.charAt(0);
+        document.getElementById("otp2").value = otp.charAt(1);
+        document.getElementById("otp3").value = otp.charAt(2);
+        document.getElementById("otp4").value = otp.charAt(3);
+    }
+};
+
 </script>
 
 </body>

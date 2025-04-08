@@ -20,22 +20,29 @@ public class UserClass {
 	
 	public static void main(String[] args) {
 		
-//		String otp="";
-//		for(int i=0;i<4;i++) {
-//			int num=(int)Math.floor(Math.random()*10);
+		String otp="";
+		for(int i=0;i<4;i++) {
+			int num=(int)Math.floor(Math.random()*10);
 //			System.out.println(otp+=num);
-//		}
+			if(i==0 && num==0 ) {
+				System.out.println("num=0 "+num);
+				num=num+1;
+				System.out.println("num+1"+num);
+			}
+			System.out.println(num);
+			otp+=num;
+		}
+		
+		System.out.println(otp);
+		
+		
+//		UserDaoImplementation userDaoImplementation = new UserDaoImplementation();
+//		User userByUsername1 = userDaoImplementation.getUserByUsername("harikrishna");
+//		System.out.println(userByUsername1);
 //		
-//		System.out.println(otp);
-		
-		
-		UserDaoImplementation userDaoImplementation = new UserDaoImplementation();
-		User userByUsername1 = userDaoImplementation.getUserByUsername("harikrishna");
-		System.out.println(userByUsername1);
-		
-		userDaoImplementation.updateUserPassword(userByUsername1, "000");
-		User userByUsername2 = userDaoImplementation.getUserByUsername("harikrishna");
-		System.out.println(userByUsername2);
+//		userDaoImplementation.updateUserPassword(userByUsername1, "000");
+//		User userByUsername2 = userDaoImplementation.getUserByUsername("harikrishna");
+//		System.out.println(userByUsername2);
 		
 		
 			

@@ -92,7 +92,7 @@ public class PlaceOrders extends HttpServlet {
 			OrderItemDaoImplementation orderItemDaoImplementation = new OrderItemDaoImplementation();
 			// Assuming cart is a Map of CartItem
 			for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
-				CartItem cartItem = entry.getValue();
+				CartItem cartItem = entry.getValue();//gives current key value
 
 				int orderId = order.getOrderId();
 				// Retrieve the menu item details (assuming menuId is a field in CartItem)
