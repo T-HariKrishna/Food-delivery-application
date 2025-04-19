@@ -18,7 +18,7 @@ public class UserClass {
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		
 		String otp="";
 		for(int i=0;i<4;i++) {
@@ -34,6 +34,10 @@ public class UserClass {
 		}
 		
 		System.out.println(otp);
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("DRIVER Loaded");
+		
 		
 		
 //		UserDaoImplementation userDaoImplementation = new UserDaoImplementation();

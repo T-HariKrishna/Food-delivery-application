@@ -22,7 +22,7 @@ public class SignInValidation extends HttpServlet {
 
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		System.err.println("\n\n"+password);
+		System.err.println("\n\npassword: "+password);
 		
 		PrintWriter out=response.getWriter();
 		
@@ -72,8 +72,8 @@ public class SignInValidation extends HttpServlet {
 				response.sendRedirect("FetchAllRestaurants");
 				}
 				else {
-					
-					out.println("<h1 style='color: red';>Password Mismatch</h1>");
+					request.setAttribute("message", "Invalid password. Please try again.");
+			        request.getRequestDispatcher("index.jsp").forward(request, response);
 					
 				}
 		}

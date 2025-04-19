@@ -16,6 +16,7 @@ public class MenuDaoImplementation implements MenuDao {
     private static final String UPDATE_MENU = "UPDATE `Menu` SET `restaurantId`=?, `itemName`=?, `description`=?, `price`=?, `ratings`=?, `isAvailable`=?, `imagePath`=? WHERE `menuId`=?";
     private static final String ADD_MENU = "INSERT INTO `Menu` (`restaurantId`, `itemName`, `description`, `price`, `ratings`, `isAvailable`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_MENU = "DELETE FROM `Menu` WHERE `menuId`=?";
+    
     private static final String SEARCH_MENU = "SELECT * FROM MENU WHERE LOWER(`itemname`) LIKE LOWER(?)";
 
     public List<Menu> searchMenuItemsByName(String itemName){

@@ -1,12 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In - Food Delivery</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-
-    <style>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign In - Food Delivery</title>
+ <style>
       /* Basic reset */
       * {
         margin: 0;
@@ -101,14 +100,23 @@
       #forgotPassword{
       margin-bottom: 5px; 
       text-decoration: none;
-      
+      color:black ;
       }
+      #forgotPassword:hover{
+      text-decoration: underline;
+      color:red;
+      }
+      
       
     </style>
   </head>
   <body>
     <div class="signin-container">
       <h2>Sign In to Food Delivery</h2>
+      
+      
+      <% String message = (String) request.getAttribute("message"); %>
+   
       <form action="SignInValidation" method="POST" class="signin-form">
         <label for="username">Username or Email</label>
         <input
@@ -127,7 +135,10 @@
           placeholder="Enter your password"
           required
         />
-		<a href="forgotPassword.jsp" id="forgotPassword">Forgot password?</a>
+		<span><a href="forgotPassword.jsp" id="forgotPassword">Forgot password?</a></span>
+		 <% if (message != null) { %>
+        <p style="color:red; margin:10px 0px;"><%= message %></p>
+    <% } %>
         <button type="submit" class="submit-btn">Sign In</button>
       </form>
 
