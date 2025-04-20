@@ -107,6 +107,21 @@
       color:red;
       }
       
+      #err_msg{
+      color:red; 
+      padding:10px 0px;
+      margin:10px 0px;
+      text-align: center;
+      border: 1px solid red;
+      }
+      #success_msg{
+      color:green; 
+      padding:10px 0px;
+      margin:10px 0px;
+      text-align: center;
+      border: 1px solid green;
+      border-radius: 5px;
+      }
       
     </style>
   </head>
@@ -115,9 +130,25 @@
       <h2>Sign In to Food Delivery</h2>
       
       
-      <% String message = (String) request.getAttribute("message"); %>
+      <% String password_message = (String) request.getAttribute("invalid_password_message"); %>
+  	 <% String user_message = (String) request.getAttribute("invalid_user_message"); %>
    
       <form action="SignInValidation" method="POST" class="signin-form">
+
+
+   		 <% if (user_message != null) { %>
+     	   <p id="err_msg"><%= user_message %></p>
+  		  <% } %>
+    
+		 <% if (user_message==null && password_message != null) { %>
+        <p id="err_msg" ><%= password_message %></p>
+  		  <% } %>
+  		  
+  		<%--   <% if (user_message==null && password_message == null) { %>
+        <p id="success_msg" >Login successful</p>
+  		  <% } %> --%>
+
+
         <label for="username">Username or Email</label>
         <input
           type="text"
@@ -135,10 +166,12 @@
           placeholder="Enter your password"
           required
         />
-		<span><a href="forgotPassword.jsp" id="forgotPassword">Forgot password?</a></span>
-		 <% if (message != null) { %>
-        <p style="color:red; margin:10px 0px;"><%= message %></p>
-    <% } %>
+		<span><a href="forgotPassword.jsp" id="forgotPassword" style="margin-bottom: 5px;">Forgot password?</a></span>
+		 
+		 
+    
+    
+    
         <button type="submit" class="submit-btn">Sign In</button>
       </form>
 

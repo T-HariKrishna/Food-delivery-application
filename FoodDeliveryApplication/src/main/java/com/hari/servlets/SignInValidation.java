@@ -49,6 +49,7 @@ public class SignInValidation extends HttpServlet {
 		
 		
 		System.out.println(userByUsername);
+
 		
 		
 		
@@ -72,14 +73,18 @@ public class SignInValidation extends HttpServlet {
 				response.sendRedirect("FetchAllRestaurants");
 				}
 				else {
-					request.setAttribute("message", "Invalid password. Please try again.");
+					System.out.println("Invalid password. Please try again.");
+					request.setAttribute("invalid_password_message", "Invalid password. Please try again.");
 			        request.getRequestDispatcher("index.jsp").forward(request, response);
 					
 				}
 		}
 		
 		else{
-			response.sendRedirect("registerPage.html");
+			System.out.println("Invalid user. Please  sign up.");
+			request.setAttribute("invalid_user_message", "Invalid username or email. Please try again.");
+	        request.getRequestDispatcher("index.jsp").forward(request, response);
+			
 		}
 	
 	
