@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import com.hari.daoimplementaion.UserDaoImplementation;
@@ -18,25 +20,60 @@ public class ResetPassword extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
 		String username = request.getParameter("username");
 		String newPassword = request.getParameter("newPassword");
 		String confirmPassword = request.getParameter("confirmPassword");
+
 		UserDaoImplementation userDaoImplementation = new UserDaoImplementation();
 		User user = userDaoImplementation.getUserByUsername(username);
 
+		System.out.println("User: " + user);
+		System.out.println("Passwords: " + newPassword + " | " + confirmPassword);
+
+		// Check if user exists
 		if (user == null) {
-			response.getWriter().print("Username is not find in the server");
+			session.setAttribute("userErrorMessage", "Username not found in the server.");
+			response.sendRedirect("resetPasswordForm.jsp");
+			return;
 		}
 
-		if (newPassword.equals(confirmPassword)) {
+		// Clear previous error message
+		session.removeAttribute("userErrorMessage");
 
-			userDaoImplementation.updateUserPassword(user, confirmPassword);
-			response.sendRedirect("index.html");
-
-		} else {
-			response.getWriter().print("password mismatching");
+		// Check if passwords match
+		if (!newPassword.equals(confirmPassword)) {
+			
+			response.sendRedirect("resetPasswordForm.jsp");
+			return;
 		}
 
+		// Clear previous error message
+		session.removeAttribute("passwordMismatchMessage");
+
+		// Proceed to update password
+		userDaoImplementation.updateUserPassword(user, confirmPassword);
+		response.sendRedirect("index.jsp");
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    

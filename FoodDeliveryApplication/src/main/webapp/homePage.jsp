@@ -75,6 +75,7 @@
 
 <div class="card-container">
 <% 
+User user=(User)session.getAttribute("user");
 ArrayList<Restaurant> restList = (ArrayList<Restaurant>) session.getAttribute("restaurantList");
 for (Restaurant restaurant : restList) { 
 %>
@@ -102,5 +103,10 @@ for (Restaurant restaurant : restList) {
 
 </div>
 
+<script type="text/javascript">
+    var userName = "<%= user.getName() %>";
+    let visit=0;
+    window.confirm("Welcome back, "+userName);
+</script>
 </body>
 </html>

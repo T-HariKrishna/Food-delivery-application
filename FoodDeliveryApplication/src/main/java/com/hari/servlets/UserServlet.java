@@ -42,10 +42,10 @@ public class UserServlet extends HttpServlet {
 		int rowEffected=userDaoImplementation.addUser(user);
 		
 		if(rowEffected==1) {
-			response.sendRedirect("index.html");
+			response.sendRedirect("index.jsp");
 		}
 		else {
-			out.println("Failed in  registering details into data base");
+			response.sendRedirect("registrationFailed.jsp");
 		}
 		
 	}

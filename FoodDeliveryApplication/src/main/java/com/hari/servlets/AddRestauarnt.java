@@ -20,7 +20,9 @@ public class AddRestauarnt extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   String restaurantName = request.getParameter("name");
 		String phone = request.getParameter("phone");
+		System.out.println("phone "+phone);
 		String address = request.getParameter("address");
+		System.out.println("address "+address);
 		String format = String.format("%.2f", Double.parseDouble(request.getParameter("rating")));
 		
 		double rating=Double.parseDouble(format);

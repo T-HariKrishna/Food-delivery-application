@@ -274,7 +274,7 @@
         
         <!-- Display Sign In link only if user is not logged in -->
         <% if (user2 == null) { %>
-          <a href="signInPage.html" class="nav-item sign-in">Sign In</a>
+          <a href="index.jsp" class="nav-item sign-in">Sign In</a>
         <% } %>
       </div>
     </nav>

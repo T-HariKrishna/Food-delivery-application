@@ -43,12 +43,12 @@ public class Restaurant {
 
 
 	//used mostly for add restaurant
-	public Restaurant(String name, String address, String phone, double rating, String cuisineType, int isActive,
+	public Restaurant(String name,String phone, String address,  double rating, String cuisineType, int isActive,
 			int adminUserId, String imagePath) {
 		super();
 		this.name = name;
-		this.address = address;
 		this.phone = phone;
+		this.address = address;
 		this.rating = rating;
 		this.cuisineType = cuisineType;
 		this.isActive = isActive;

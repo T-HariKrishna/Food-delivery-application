@@ -16,11 +16,32 @@ public class RestaurantDaoImplementation implements RestaurantDao {
     private static final String GET_ALL_RESTAURANTS = "SELECT * FROM `Restaurant`";
     private static final String GET_RESTAURANT_BY_ID = "SELECT * FROM `Restaurant` WHERE `restaurantId`=?";
     private static final String UPDATE_RESTAURANT = "UPDATE `Restaurant` SET `name`=?, `address`=?, `phone`=?, `rating`=?, `cuisineType`=?, `isActive`=?,  `adminUserId`=?, `imagePath`=? WHERE `restaurantId`=?";
-    private static final String ADD_RESTAURANT = "INSERT INTO `Restaurant` (`name`, `address`, `phone`, `rating`, `cuisineType`, `isActive`, `adminUserId`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String ADD_RESTAURANT = "INSERT INTO `Restaurant` (`name`, `phone`, `address`, `rating`, `cuisineType`, `isActive`, `adminUserId`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_RESTAURANT = "DELETE FROM `Restaurant` WHERE `restaurantId`=?";
     private static final String SEARCH_RESTAURANT = "SELECT * FROM `restaurant` where LOWER(`name`) LIKE  LOWER(?)";
 
    
+    @Override
+    public int addRestaurant(Restaurant restaurant) {
+        try (Connection connection = DataBaseUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(ADD_RESTAURANT)) {
+            preparedStatement.setString(1, restaurant.getName());
+            preparedStatement.setString(2, restaurant.getPhone());
+            preparedStatement.setString(3, restaurant.getAddress());
+            preparedStatement.setDouble(4, restaurant.getRating());
+            preparedStatement.setString(5, restaurant.getCuisineType());
+            preparedStatement.setInt(6, restaurant.isActive());
+            preparedStatement.setInt(7, restaurant.getAdminUserId());
+            preparedStatement.setString(8, restaurant.getImagePath());
+
+           return  preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Consider using a logging framework
+        }
+		return 0;
+    }
+    
+    
     public List<Restaurant> searchRestaurantByName(String name){
     List<Restaurant> restaurantList=new ArrayList<Restaurant>();
     	try(Connection connection=DataBaseUtility.getConnection();
@@ -117,25 +138,7 @@ public class RestaurantDaoImplementation implements RestaurantDao {
 		
     }
 
-    @Override
-    public int addRestaurant(Restaurant restaurant) {
-        try (Connection connection = DataBaseUtility.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(ADD_RESTAURANT)) {
-            preparedStatement.setString(1, restaurant.getName());
-            preparedStatement.setString(2, restaurant.getAddress());
-            preparedStatement.setString(3, restaurant.getPhone());
-            preparedStatement.setDouble(4, restaurant.getRating());
-            preparedStatement.setString(5, restaurant.getCuisineType());
-            preparedStatement.setInt(6, restaurant.isActive());
-            preparedStatement.setInt(7, restaurant.getAdminUserId());
-            preparedStatement.setString(8, restaurant.getImagePath());
-
-           return  preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider using a logging framework
-        }
-		return 0;
-    }
+    
 
     @Override
     public int deleteRestaurant(int restaurantId) {

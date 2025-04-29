@@ -23,6 +23,6 @@ public class LogOut extends HttpServlet {
 			
 			session.removeAttribute("user");
 			
-			response.sendRedirect("index.html");
+			response.sendRedirect("index.jsp");
 	}
 }
