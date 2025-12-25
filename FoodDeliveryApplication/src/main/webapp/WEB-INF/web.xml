@@ -14,5 +14,14 @@
     <servlet-name>AdminSearchMenuItems</servlet-name>
     <url-pattern>/AdminSearchMenuItems</url-pattern>
   </servlet-mapping>
-  
+  <!-- <servlet>
+    <description></description>
+    <display-name>ForgotPasswordUsernameVerification</display-name>
+    <servlet-name>ForgotPasswordUsernameVerification</servlet-name>
+    <servlet-class>com.hari.servlets.ForgotPasswordUsernameVerification</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPasswordUsernameVerification</servlet-name>
+    <url-pattern>/ForgotPasswordUsernameVerification</url-pattern>
+  </servlet-mapping> -->
 </web-app>

@@ -253,7 +253,7 @@ String restaurantName = (String) session.getAttribute("restaurantName");
             </form>
             
         </div>
-    <% } }%>
+    <% }}%>
     
   
 </div>

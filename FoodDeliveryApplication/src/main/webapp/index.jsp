@@ -133,7 +133,7 @@
         <button type="button" class="toggle-btn" onclick="togglePassword()">🙂</button>
       </div>
 
-      <a class="forgot" href="forgotPassword.jsp">Forgot password?</a>
+      <a class="forgot" href="forgotPasswordUsernameVerification.html">Forgot password?</a>
 
       <button type="submit">Sign In</button>
     </form>

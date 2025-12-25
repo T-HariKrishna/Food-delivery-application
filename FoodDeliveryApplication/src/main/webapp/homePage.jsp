@@ -103,10 +103,10 @@ for (Restaurant restaurant : restList) {
 
 </div>
 
-<script type="text/javascript">
+<%-- <script type="text/javascript">
     var userName = "<%= user.getName() %>";
     let visit=0;
     window.confirm("Welcome back, "+userName);
-</script>
+</script> --%>
 </body>
 </html>

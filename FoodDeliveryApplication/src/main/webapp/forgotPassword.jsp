@@ -120,11 +120,12 @@ button:hover {
 } 
 
 
-
+//It will help to choose the user to fill the OTP auto-fill
 window.onload = function () {
     const otp = "<%= otp %>"; // Embedded from JSP
-    const confirmAutoFill = window.confirm("Do you want to auto-fill the OTP?");
-
+    const confirmAutoFill = window.confirm(
+    		  "Your account has been fetched successfully.\nDo you want to auto-fill the OTP?"
+    		);
     if (confirmAutoFill) {
         document.getElementById("otp1").value = otp.charAt(0);
         document.getElementById("otp2").value = otp.charAt(1);
