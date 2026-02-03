@@ -16,13 +16,23 @@
       <scope>test</scope>
     </dependency>
   	
-  	<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-	<dependency>
+  <!--https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<!--This requires Tomcat 10.1+-->
+		<!--<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
-	</dependency>
+		</dependency>
+		-->
+
+<!--Railway usually runs Tomcat 9 / 10 → safer to downgrade-->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>5.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
