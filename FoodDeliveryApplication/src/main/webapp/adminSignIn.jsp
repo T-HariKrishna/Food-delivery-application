@@ -1,219 +1,107 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Login</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Sign In - Food Delivery</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-}
-
 body {
-  height: 100vh;
-  display: flex;S
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, #fdf2f1 50%, #fee2e2 100%);
-  padding: 20px;
-}
-
-.login-wrapper {
-  width: 100%;
-  max-width: 420px;
-}
-
-.login-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  border: 1px solid #fecaca;
-}
-
-.logo-container {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.logo-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #f43f5e 0%, #dc2626 100%);
-  border-radius: 50%;
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
-  box-shadow: 0 10px 25px rgba(244, 63, 94, 0.25);
-  font-size: 32px;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.logo-container h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 6px;
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
-.logo-container p {
-  font-size: 14px;
-  color: #6b7280;
-}
-
-.error-message {
-  background: #fee2e2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 14px;
+h2 {
   text-align: center;
-  animation: slideDown 0.3s ease-out;
-  display: none;
-}
-
-.error-message.show {
-  display: block;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  color: #ff6f61;
+  margin-bottom: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
-  margin-bottom: 8px;
-}
-
-.input-wrapper {
+  margin-bottom: 15px;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.input-icon {
-  position: absolute;
-  left: 12px;
-  color: #9ca3af;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input {
   width: 100%;
-  padding: 12px 12px 12px 40px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #1f2937;
-  transition: all 0.3s ease;
-  background: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-input::placeholder {
-  color: #9ca3af;
-}
-
-input:focus {
-  outline: none;
-  border-color: #f43f5e;
-  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.1);
-  background: #ffffff;
-}
-
-.password-wrapper {
-  position: relative;
-}
-
-.toggle-password {
+/* .toggle-btn {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 10px;
+  top: 35px;
   background: none;
   border: none;
+  font-size: 20px;
   cursor: pointer;
-  color: #9ca3af;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.3s ease;
+}
+ */
+ 
+  .toggle-btn {
+        position: absolute;
+        right: -190px;
+        top: 20px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+ 
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.toggle-password:hover {
-  color: #6b7280;
-}
-
-.forgot-link {
+.forgot {
+  display: block;
   text-align: right;
-  margin-bottom: 20px;
-}
-
-.forgot-link a {
   font-size: 14px;
-  color: #f43f5e;
+  margin-bottom: 10px;
+  color: #333;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
 }
 
-.forgot-link a:hover {
-  color: #e11d48;
+.forgot:hover {
+  text-decoration: underline;
 }
 
-.login-button {
+button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #f43f5e 0%, #dc2626 100%);
-  color: #ffffff;
+  background: #ff6f61;
+  color: white;
   border: none;
-  border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(244, 63, 94, 0.2);
-}
-
-.login-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(244, 63, 94, 0.3);
-  background: linear-gradient(135deg, #e11d48 0%, #b91c1c 100%);
-}
-
-.login-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.login-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .back-link-container {
@@ -228,151 +116,102 @@ input:focus {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
 }
 
 .back-link:hover {
   color: #1f2937;
 }
 
-.back-arrow {
-  width: 16px;
-  height: 16px;
+.register {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
+.register a {
+  color: #ff6f61;
+  text-decoration: none;
+}
 
-
-@media (max-width: 480px) {
-  .login-card {
-    padding: 32px 20px;
-  }
-
-  .logo-container h2 {
-    font-size: 24px;
-  }
+.register a:hover {
+  text-decoration: underline;
 }
 </style>
 </head>
 
 <body>
 
-<div class="login-wrapper">
-  <div class="login-card">
-    <div class="logo-container">
-      <div class="logo-icon">🛡️</div>
-      <h2>Admin Panel</h2>
-      <p>Secure Login</p>
-    </div>
+<div class="container">
+<h2>Admin Sign In</h2>
 
-    <% String error = (String) request.getAttribute("admin_error"); %>
-    <div class="error-message <% if(error != null){ %>show<% } %>">
-      <% if(error != null){ %><%= error %><% } %>
-    </div>
+<%
+String userMsg = (String) request.getAttribute("invalid_user_message");
+String passMsg = (String) request.getAttribute("invalid_password_message");
+String roleMsg = (String) request.getAttribute("invalid_role_message");
 
-    <form action="AdminVerification" method="POST" onsubmit="return validateForm()">
+if (userMsg != null) {
+%>
+  <div class="error"><%= userMsg %></div>
+<%
+} else if (passMsg != null) {
+%>
+  <div class="error"><%= passMsg %></div>
+<%
+} else if (roleMsg != null) {
+%>
+  <div class="error"><%= roleMsg %></div>
+<%
+}
+%>
 
-      <div class="form-group">
-        <label for="username">Username</label>
-        <div class="input-wrapper">
-          <div class="input-icon">👤</div>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter your username"
-            required
-            autocomplete="off"
-          >
-        </div>
-      </div>
+<form action="AdminVerification" method="POST">
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <div class="input-wrapper password-wrapper">
-          <div class="input-icon">🔒</div>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-            autocomplete="off"
-          >
-          <button
-            type="button"
-            class="toggle-password"
-            onclick="togglePassword()"
-            aria-label="Toggle password visibility"
-          >
-            <span id="toggle-icon">👁️</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="forgot-link">
-        <a href="forgotPasswordUsernameVerification.html">Forgot password?</a>
-      </div>
-
-      <button type="submit" class="login-button" id="submit-btn">
-        <span id="btn-text">Login</span>
-      </button>
-    </form>
-
-    <div class="back-link-container">
-      <a href="index.jsp" class="back-link">
-        <span>←</span>
-        Back to User Login
-      </a>
-    </div>
-
-    
+  <div class="form-group">
+    <label for="username">Username or Email</label>
+    <input type="text" id="username" name="username"
+      value="<%= request.getParameter("username") != null ? request.getParameter("username") : "" %>" required />
   </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+    <button type="button" class="toggle-btn" onclick="togglePassword()">🙂</button>
+  </div>
+
+  <!-- (Optional same as user page) -->
+  <a class="forgot" href="forgotPasswordUsernameVerification.html">Forgot password?</a>
+
+  <button type="submit">Sign In</button>
+
+</form>
+
+<!-- ✅ SAME NAVIGATION STYLE -->
+<div class="back-link-container">
+  <a href="index.jsp" class="back-link">
+    <span>→</span>
+    Go To User Login
+  </a>
+</div>
+
+<div class="register">
+  Don't have an account? <a href="registerPage.html">Register here</a>
+</div>
+
 </div>
 
 <script>
 function togglePassword() {
-  const passwordInput = document.getElementById('password');
-  const toggleIcon = document.getElementById('toggle-icon');
+  const password = document.getElementById("password");
+  const toggleBtn = document.querySelector(".toggle-btn");
 
-  if (passwordInput.type === 'password') {
-    passwordInput.type = 'text';
-    toggleIcon.textContent = '👁️‍🗨️';
+  if (password.type === "password") {
+    password.type = "text";
+    toggleBtn.textContent = "😎";
   } else {
-    passwordInput.type = 'password';
-    toggleIcon.textContent = '👁️';
+    password.type = "password";
+    toggleBtn.textContent = "🙂";
   }
 }
-
-function validateForm() {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const submitBtn = document.getElementById('submit-btn');
-  const btnText = document.getElementById('btn-text');
-
-  if (!username || !password) {
-    return false;
-  }
-
-  submitBtn.disabled = true;
-  btnText.textContent = 'Logging in...';
-
-  return true;
-}
-
-// Clear error message when user starts typing
-document.getElementById('username').addEventListener('input', function() {
-  const errorMsg = document.querySelector('.error-message');
-  if (errorMsg) {
-    errorMsg.classList.remove('show');
-  }
-});
-
-document.getElementById('password').addEventListener('input', function() {
-  const errorMsg = document.querySelector('.error-message');
-  if (errorMsg) {
-    errorMsg.classList.remove('show');
-  }
-});
 </script>
 
 </body>
