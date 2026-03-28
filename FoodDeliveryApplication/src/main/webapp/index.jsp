@@ -145,7 +145,7 @@ pageEncoding="UTF-8"%>
       <div class="error"><%= password_message %></div>
       <% } %>
 
-      <form action-="SignInValidation" method="POST">
+      <form action="SignInValidation" method="POST">
         <div class="form-group">
           <label for="username">Username or Email</label>
           <input type="text" id="username" name="username" required />
